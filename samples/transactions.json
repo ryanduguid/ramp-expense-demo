@@ -1,0 +1,52 @@
+[
+  {
+    "_comment": "MONEY SHOT — UK client entertainment. Ramp categorizes it cleanly; OA flags it non-deductible + VAT-blocked.",
+    "merchant_name": "The Ledbury",
+    "amount": 240.00,
+    "currency_code": "GBP",
+    "sk_category_name": "Meals & Entertainment",
+    "memo": "Dinner with client ACME Ltd",
+    "card_holder": { "first_name": "Sarah", "last_name": "Mifsud" },
+    "entity_country": "GB"
+  },
+  {
+    "_comment": "UK software subscription — clean deductible + VAT recoverable.",
+    "merchant_name": "Figma",
+    "amount": 144.00,
+    "currency_code": "GBP",
+    "sk_category_name": "Software & Web Services",
+    "memo": "Design tool subscription",
+    "card_holder": { "first_name": "Sarah", "last_name": "Mifsud" },
+    "entity_country": "GB"
+  },
+  {
+    "_comment": "US business meal — only 50% deductible (IRC 274(n)).",
+    "merchant_name": "Joe's Grill",
+    "amount": 120.00,
+    "currency_code": "USD",
+    "sk_category_name": "Meals",
+    "memo": "Lunch with prospect re: Q3 deal",
+    "card_holder": { "first_name": "Dave", "last_name": "Romero" },
+    "entity_country": "US"
+  },
+  {
+    "_comment": "US entertainment — non-deductible post-TCJA (IRC 274(a)).",
+    "merchant_name": "Ticketmaster",
+    "amount": 600.00,
+    "currency_code": "USD",
+    "sk_category_name": "Entertainment",
+    "memo": "NBA tickets with client",
+    "card_holder": { "first_name": "Dave", "last_name": "Romero" },
+    "entity_country": "US"
+  },
+  {
+    "_comment": "US office supplies — fully deductible.",
+    "merchant_name": "Staples",
+    "amount": 85.00,
+    "currency_code": "USD",
+    "sk_category_name": "Office Supplies",
+    "memo": "Printer paper + toner",
+    "card_holder": { "first_name": "Dave", "last_name": "Romero" },
+    "entity_country": "US"
+  }
+]
