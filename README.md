@@ -2,7 +2,7 @@
 
 Demonstrates expense deductibility and VAT recoverability checks on Ramp-shaped transactions using OpenAccountants sample rules, with an optional live MCP connection.
 
-Default runs use bundled sample responses. Their rates, verdicts and reviewer labels are illustrative fixtures, not evidence that an accountant reviewed the demo or a live Guide. For live use, check the fetched Guide's review status, reviewer, version and review date against the [review method](https://www.openaccountants.com/review-method). A jurisdiction lead's name alone does not establish review. Have a qualified professional review outputs before filing or acting on them.
+Default runs use bundled sample responses. Their rates, verdicts and reviewer labels are illustrative fixtures, not evidence that an accountant reviewed the demo or a live skill. For live use, check the fetched skill's review status, reviewer, version and review date against the [review method](https://www.openaccountants.com/review-method). A jurisdiction lead's name alone does not establish review. Have a qualified professional review outputs before filing or acting on them.
 
 ```
 Ramp transaction
@@ -12,7 +12,7 @@ Ramp transaction
                            ℹ️  only 50% deductible — document it
                            ⚠️ NOT deductible / VAT blocked   ← the catch
                  · the rule that decided it (cited)
-                 · the Guide's published review status, if present
+                 · the skill's published review status, if present
 ```
 
 ![Ramp → OpenAccountants demo](demo.svg)
@@ -22,7 +22,7 @@ Ramp transaction
 ## Why this is a partnership, not an overlap
 
 - **Ramp = the spend rail.** Cards, transactions, clean categorization. Stops (by design) at *what the expense was*.
-- **OpenAccountants** loads Guide content through MCP for expense deductibility and VAT/GST recoverability checks. Review status varies by Guide version.
+- **OpenAccountants** loads skill content through MCP for expense deductibility and VAT/GST recoverability checks. Review status varies by skill version.
 
 A correct *category* ("Meals & Entertainment") is not a correct *tax treatment*. Ramp's finance/AP customers ask "…can we actually deduct this? can we reclaim the VAT?" right after categorization — and nothing in the pipeline answers it. This does, and it makes Ramp's data more valuable without Ramp building regulated, jurisdiction-specific tax logic or recruiting a CPA network.
 
@@ -38,7 +38,7 @@ A sample transaction feed across two jurisdictions, run through the OpenAccounta
 | Ticketmaster — "NBA tickets with client" | US | ⚠️ **NOT deductible** (entertainment, post-TCJA) |
 | Staples — office supplies | US | ✅ Deductible |
 
-**The money shot:** Ramp categorizes the £240 client dinner cleanly as "Meals & Entertainment." **OpenAccountants is the layer that knows UK client entertainment isn't deductible and the input VAT is blocked** (CTA 2009 s1298); and that the same kind of expense is treated differently in the US (50% for meals, 0% for entertainment). The sample rule illustrates the distinction; check live Guide review status separately.
+**The money shot:** Ramp categorizes the £240 client dinner cleanly as "Meals & Entertainment." **OpenAccountants is the layer that knows UK client entertainment isn't deductible and the input VAT is blocked** (CTA 2009 s1298); and that the same kind of expense is treated differently in the US (50% for meals, 0% for entertainment). The sample rule illustrates the distinction; check live skill review status separately.
 
 ## Run it
 
@@ -58,7 +58,7 @@ export RAMP_CLIENT_SECRET=...
 python pipeline.py
 ```
 
-- With `OA_MCP_TOKEN`, `oa_client.py` calls the live MCP (`start` → `get_skill`); Guide content comes back live; inspect its review status and reviewer fields.
+- With `OA_MCP_TOKEN`, `oa_client.py` calls the live MCP (`start` → `get_skill`); skill content comes back live; inspect its review status and reviewer fields.
 - With Ramp credentials, `ramp_client.py` pulls real transactions instead of the bundled sample.
 - With neither, it runs on the sample feed so the flow is visible today.
 
@@ -74,5 +74,5 @@ python pipeline.py
 
 ## Honest notes
 
-- `deductibility_check.py` is a **deliberate simplification**; a keyword classifier + a handful of categories per jurisdiction, enough to make the demo land. In production the OA *skill* carries the full rule set and an AI agent reasons over it; professional review must be established for the specific Guide version and your facts.
+- `deductibility_check.py` is a **deliberate simplification**; a keyword classifier + a handful of categories per jurisdiction, enough to make the demo land. In production the OA *skill* carries the full rule set and an AI agent reasons over it; professional review must be established for the specific skill version and your facts.
 - Reviewer names in bundled responses are fixture labels. In live mode, inspect the actual `get_skill` response and its review record; a lead's name is not proof of review.
